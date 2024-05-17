@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p>Precisão: <span id="accuracy"></span></p>
+    <p>Latitude: <span id="lat"></span></p>
+    <p>Longitude: <span id="long"></span></p>
+    <script>
+        if('geolocation' in navigator){
+            navigator.geolocation.getCurrentPosition(function(position){
+                console.log(position)
+                document.getElementById("accuracy").innerText=position.coords.accuracy
+                document.getElementById("lat").innerText=position.coords.latitude
+                document.getElementById("long").innerText=position.coords.longitude
+            },function(error){
+                console.log(error)
+            },{enableHighAccuracy:true})
+        }
+        else{
+            console.log('infelizmente não foi possível obter sua localização!')
+        }
+    </script>
+</body>
+</html>
